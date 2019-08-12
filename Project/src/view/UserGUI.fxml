@@ -10,6 +10,6 @@
       <Button layoutX="97.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약 취소" />
       <Button layoutX="182.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="정보" />
       <Button layoutX="264.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="건의사항" />
-      <Label prefHeight="21.0" prefWidth="165.0" text="회원 메뉴" />
+      <Label layoutX="136.0" layoutY="4.0" prefHeight="21.0" prefWidth="165.0" text="회원 메뉴" />
    </children>
 </AnchorPane>
