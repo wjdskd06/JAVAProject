@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="405.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Label layoutX="176.0" layoutY="14.0" text="건의 사항" />
+      <TableView layoutY="50.0" prefHeight="200.0" prefWidth="403.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="번호" />
+          <TableColumn prefWidth="75.0" text="유저 ID" />
+            <TableColumn prefWidth="75.0" text="건의 내용" />
+            <TableColumn prefWidth="75.0" text="날짜" />
+            <TableColumn prefWidth="102.0" text="처리 여부" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
