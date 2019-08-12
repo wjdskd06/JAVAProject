@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="181.0" prefWidth="266.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Label layoutX="102.0" layoutY="14.0" text="회원 정보" />
+      <Label layoutX="8.0" layoutY="58.0" prefHeight="15.0" prefWidth="65.0" text="ID" />
+      <Label layoutX="8.0" layoutY="91.0" text="PASSWORD" />
+      <Label layoutX="8.0" layoutY="121.0" text="적립 포인트" />
+      <Label layoutX="8.0" layoutY="152.0" text="등급 포인트" />
+      <TextField layoutX="85.0" layoutY="54.0" />
+      <TextField layoutX="85.0" layoutY="87.0" />
+      <TextField layoutX="85.0" layoutY="117.0" />
+      <TextField layoutX="85.0" layoutY="148.0" />
+   </children>
+</AnchorPane>
