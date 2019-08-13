@@ -85,12 +85,12 @@ public class UserDAO {
 
 	}
 
-	public User selectOne(Connection conn, int user_code) throws SQLException {
+	public User selectOne(Connection conn, String user_id) throws SQLException {//user id != user code but please primary key
 		User user = null;
-		String sql = "select * from departments where department_id = ?";
+		String sql = "select * from user1 where user_id = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
-		pstmt.setInt(1, user_code);
+		pstmt.setString(1, user_id);
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
 			user.setUser_Code(rs.getInt("USER_CODE"));
@@ -100,8 +100,6 @@ public class UserDAO {
 			user.setSale_Point(rs.getInt("SALE_POINT"));
 			user.setUser_Type(rs.getString("USER_TYPE"));
 			user.setHire_Date(rs.getString("HIRE_DATE"));
-			
-
 		}
 		return user;
 	}
@@ -135,24 +133,26 @@ public class UserDAO {
 		return users;
 	}
 
-//	public List<DepartmentsTable> selectAllTable(Connection conn) throws SQLException {
-//		List<DepartmentsTable> users = new ArrayList<DepartmentsTable>();
-//		String sql = "select department_id,department_name,manager_id,location_id " + "from departments";
-//		PreparedStatement pstmt = conn.prepareStatement(sql);
-//		ResultSet rs = pstmt.executeQuery();
-//		while (rs.next()) {
-//			DepartmentsTable user = new DepartmentsTable();
-//			user.setDepartmentId(rs.getInt("department_id"));
-//			user.setDepartmentName(rs.getString("department_name"));
-//			user.setManagerId(rs.getInt("manager_id"));
-//			user.setLocationId(rs.getInt("location_id"));
-//			users.add(user);
-//			System.out.println(user);
-//
-//		}
-//		return users;
-//	}
-//
+	public List<User> selectAllTable(Connection conn) throws SQLException {
+		List<User> users = new ArrayList<User>();
+		String sql = "select department_id,department_name,manager_id,location_id " + "from departments";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			User user = new User();
+			user.setUser_Code(rs.getInt("USER_CODE"));
+			user.setUser_Id(rs.getString("USER_ID"));
+			user.setUser_Pw(rs.getString("USER_PW"));
+			user.setGrade_Point(rs.getInt("GRADE_POINT"));
+			user.setSale_Point(rs.getInt("SALE_POINT"));
+			user.setUser_Type(rs.getString("USER_TYPE"));
+			user.setHire_Date(rs.getString("HIRE_DATE"));
+			users.add(user);
+
+		}
+		return users;
+	} //need Test.
+
 //	public List<DepartmentsTable> selectPage(Connection conn, int startuserid, int enddepartmentid)
 //			throws SQLException {
 //

@@ -7,9 +7,9 @@ public interface UserService {
 
 	boolean update(User user);
 
-	boolean delete(int user_id);
+	boolean delete(int user_Code);
 
-	User selectOne(int dept_id);
+	User selectOne(String dept_id);
 
 	List<User> selectAll();
 
