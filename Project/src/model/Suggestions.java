@@ -5,6 +5,7 @@ public class Suggestions {
 	int user_Id; // database foreign key user1;
 	String suggestion_Date; // data type date; 
 	String success; //administrater clear,confirm, not confirm, clearing   
+	String CONTENT;
 	public int getSuggestions_Id() {
 		return suggestions_Id;
 	}
@@ -29,5 +30,12 @@ public class Suggestions {
 	public void setSuccess(String success) {
 		this.success = success;
 	}
+	public String getCONTENT() {
+		return CONTENT;
+	}
+	public void setCONTENT(String cONTENT) {
+		CONTENT = cONTENT;
+	}
+
 
 }
