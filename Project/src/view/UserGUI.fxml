@@ -4,9 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="95.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="95.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="Controller.UserRootController" >
    <children>
-      <Button layoutX="8.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약" />
+      <Button fx:id="btnReservation" onAction="#handleDialog" layoutX="8.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약" />
       <Button layoutX="97.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약 취소" />
       <Button layoutX="182.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="정보" />
       <Button layoutX="264.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="건의사항" />
