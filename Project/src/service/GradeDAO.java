@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Grade;
+import model.User;
 
 public class GradeDAO {
 	private static GradeDAO instance = new GradeDAO();
@@ -56,4 +57,22 @@ public class GradeDAO {
 		System.out.println(r + "건 삭제 완료");
 
 	}
+	
+	public String outGrade(Connection conn, int grade_Point) {
+		String sql = "select GRADE from grade "
+				+"where ? between min_count and max_count";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, grade_Point);
+			ResultSet rs = pstmt.executeQuery();
+			return rs.getString(0);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	
 }
