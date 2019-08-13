@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="255.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sun.java.swing.plaf.windows.Control">
+<AnchorPane prefHeight="255.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="Controller.UserRootController">
    <children>
       <DatePicker layoutX="9.0" layoutY="26.0" prefHeight="35.0" prefWidth="165.0" />
       <Button layoutX="597.0" layoutY="218.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="57.0" text="예약" />

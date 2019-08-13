@@ -20,7 +20,13 @@ public class UserRootController {
 	@FXML
 	Button btnMemberInfo;
 	@FXML
-	Button btnSuggesion;
+	Button btnSuggestion;
+	@FXML
+	Button btnSuggestionMenu;
+	@FXML
+	Button btnSuggestionResult;
+	
+	
 	@FXML
 	AnchorPane anchorPane;
 	@FXML
@@ -30,29 +36,19 @@ public class UserRootController {
 	
 	
 	
-	@FXML
-	private void Reservation(ActionEvent actionEvent) {
-		//datepicker.getDayCellFactory().
-		//History history = new History();
-		//history.set
-	}
-	
-	
-	
-	
-	
+
 	
 	@FXML
-	public void handleDialog(ActionEvent actionevent) { //open window
+	public void Reservation(ActionEvent actionevent) { //open window
 		try {
-			AnchorPane ReservationView = FXMLLoader.load(getClass().getResource("view/Reservation.fxml"));
+			AnchorPane Reservation = FXMLLoader.load(getClass().getResource("../view/Reservation.fxml"));
 			Stage primarystage = (Stage) btnReservation.getScene().getWindow();
 			
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
 			dialog.initOwner(primarystage);
 
-			Scene scene = new Scene(ReservationView);
+			Scene scene = new Scene(Reservation);
 			dialog.setScene(scene);
 			dialog.setResizable(false);
 			dialog.show();
@@ -61,5 +57,114 @@ public class UserRootController {
 
 		}
 	}
+	
+	@FXML
+	public void ReservationCencle(ActionEvent actionevent) { //open window
+		try {
+			AnchorPane ReservationCencleView = FXMLLoader.load(getClass().getResource("../view/Cencle.fxml"));
+			Stage primarystage = (Stage) btnResservationCencle.getScene().getWindow();
+			
+			Stage dialog = new Stage(StageStyle.UTILITY);
+			dialog.initModality(Modality.WINDOW_MODAL);
+			dialog.initOwner(primarystage);
+
+			Scene scene = new Scene(ReservationCencleView);
+			dialog.setScene(scene);
+			dialog.setResizable(false);
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+
+	
+	
+	
+	
+	
+	@FXML
+	public void MemberInfo(ActionEvent actionevent) { //open window
+		try {
+			AnchorPane memberinfo = FXMLLoader.load(getClass().getResource("../view/MemberInfo.fxml"));
+			Stage primarystage = (Stage) btnMemberInfo.getScene().getWindow();
+			
+			Stage dialog = new Stage(StageStyle.UTILITY);
+			dialog.initModality(Modality.WINDOW_MODAL);
+			dialog.initOwner(primarystage);
+
+			Scene scene = new Scene(memberinfo);
+			dialog.setScene(scene);
+			dialog.setResizable(false);
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	
+	@FXML
+	public void SuggestionMenu(ActionEvent actionevent) { //open window
+		try {
+			AnchorPane Suggestionmenu = FXMLLoader.load(getClass().getResource("../view/SuggestionMenu.fxml"));
+			Stage primarystage = (Stage) btnSuggestionMenu.getScene().getWindow();
+			
+			Stage dialog = new Stage(StageStyle.UTILITY);
+			dialog.initModality(Modality.WINDOW_MODAL);
+			dialog.initOwner(primarystage);
+
+			Scene scene = new Scene(Suggestionmenu);
+			dialog.setScene(scene);
+			dialog.setResizable(false);
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	
+	@FXML
+	public void Suggestion(ActionEvent actionevent) { //open window
+		try {
+			AnchorPane Suggestion = FXMLLoader.load(getClass().getResource("../view/Suggestion.fxml"));
+			Stage primarystage = (Stage) btnSuggestion.getScene().getWindow();
+			
+			Stage dialog = new Stage(StageStyle.UTILITY);
+			dialog.initModality(Modality.WINDOW_MODAL);
+			dialog.initOwner(primarystage);
+
+			Scene scene = new Scene(Suggestion);
+			dialog.setScene(scene);
+			dialog.setResizable(false);
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	@FXML
+	public void SuggestionResult(ActionEvent actionevent) { //open window
+		try {
+			AnchorPane SuggestionResult = FXMLLoader.load(getClass().getResource("../view/SuggestionResult.fxml"));
+			Stage primarystage = (Stage) btnSuggestionResult.getScene().getWindow();
+			
+			Stage dialog = new Stage(StageStyle.UTILITY);
+			dialog.initModality(Modality.WINDOW_MODAL);
+			dialog.initOwner(primarystage);
+
+			Scene scene = new Scene(SuggestionResult);
+			dialog.setScene(scene);
+			dialog.setResizable(false);
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+	
+	
 
 }

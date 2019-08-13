@@ -7,10 +7,10 @@
 <AnchorPane prefHeight="95.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="Controller.UserRootController" >
    <children>
-      <Button fx:id="btnReservation" onAction="#handleDialog" layoutX="8.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약" />
-      <Button layoutX="97.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약 취소" />
-      <Button layoutX="182.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="정보" />
-      <Button layoutX="264.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="건의사항" />
+      <Button fx:id="btnReservation" onAction="#Reservation" layoutX="8.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약" />
+      <Button fx:id="btnResservationCencle" onAction="#ReservationCencle" layoutX="97.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="예약 취소" />
+      <Button fx:id="btnMemberInfo"  onAction="#MemberInfo" layoutX="182.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="정보" />
+      <Button fx:id="btnSuggestionMenu" onAction="#SuggestionMenu" layoutX="264.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="72.0" text="건의사항" />
       <Label layoutX="136.0" layoutY="4.0" prefHeight="21.0" prefWidth="165.0" text="회원 메뉴" />
    </children>
 </AnchorPane>
