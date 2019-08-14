@@ -47,8 +47,12 @@ public class UserDAO {
 		String sql = "select max(user_code) from user1";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
 			ResultSet rs = pstmt.executeQuery();
-			return rs.getInt(0);
+			while(rs.next()) {
+				return rs.getInt("max(user_code)");	
+			}
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
