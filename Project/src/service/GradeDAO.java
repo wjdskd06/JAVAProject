@@ -73,6 +73,20 @@ public class GradeDAO {
 		
 		return null;
 	}
-
+	public String outGrade(Connection conn, User user) {
+		String sql = "select GRADE from grade "
+				+"where ? between min_count and max_count";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, user.getUser_Code());
+			ResultSet rs = pstmt.executeQuery();
+			return rs.getString(0);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 }

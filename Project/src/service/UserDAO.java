@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import common.DAO;
 import model.User;
 
 public class UserDAO {
@@ -31,7 +32,7 @@ public class UserDAO {
 				+ "values(?,?,?,?,?,?,sysdate)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, returnMaxUserCode(conn)+1);
+		pstmt.setInt(1, returnMaxUserCode(conn) + 1);
 		pstmt.setString(2, user.getUser_Id());
 		pstmt.setString(3, user.getUser_Pw());
 		pstmt.setInt(4, 0);
@@ -57,8 +58,8 @@ public class UserDAO {
 	}
 
 	public void update(Connection conn, User user) throws SQLException {
-		String sql = "update user1 set user_id = ?,	user_pw = ?, grade_point =?, sale_point =?,	user_type =?"+
-						"where user_code = ?";
+		String sql = "update user1 set user_id = ?,	user_pw = ?, grade_point =?, sale_point =?,	user_type =?"
+				+ "where user_code = ?";
 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt = conn.prepareStatement(sql);
@@ -85,7 +86,8 @@ public class UserDAO {
 
 	}
 
-	public User selectOne(Connection conn, String user_id) throws SQLException {//user id != user code but please primary key
+	public User selectOne(Connection conn, String user_id) throws SQLException {// user id != user code but please
+																				// primary key
 		User user = null;
 		String sql = "select * from user1 where user_id = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -111,7 +113,7 @@ public class UserDAO {
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
 			User user = new User();
-			
+
 //			USER_CODE	NUMBER
 //			USER_ID	VARCHAR2(20 BYTE)
 //			USER_PW	VARCHAR2(20 BYTE)
@@ -151,7 +153,27 @@ public class UserDAO {
 
 		}
 		return users;
-	} //need Test.
+	} // need Test.
+
+	public boolean Login(String UserId, String UserPw) {
+		Connection conn = DAO.getConnect();
+		String sql = "select USER_ID, USER_PW " + "from user1" + "where user_id = ? " + "and user_pw = ?";
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				return true;
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+
+	}
 
 //	public List<DepartmentsTable> selectPage(Connection conn, int startuserid, int enddepartmentid)
 //			throws SQLException {
