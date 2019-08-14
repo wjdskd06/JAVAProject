@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="300.0" prefWidth="405.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane prefHeight="300.0" prefWidth="405.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171"
+fx:controller="Controller.ManagerSuggestionController">
    <children>
       <Label layoutX="176.0" layoutY="14.0" text="건의 사항" />
       <TableView layoutY="50.0" prefHeight="200.0" prefWidth="403.0">

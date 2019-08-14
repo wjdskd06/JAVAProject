@@ -2,9 +2,13 @@ package service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import common.DAO;
+import model.Location;
 import model.Suggestions;
 
 
@@ -39,6 +43,23 @@ public class SuggestionDAO  {
 			}
 		}
 		
+	}
+	
+	
+	public List<Suggestions> selectAll(Connection conn) throws SQLException {
+		List<Suggestions> suggestions = new ArrayList<Suggestions>();
+		String sql = "select * " + "from Suggestions";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			Suggestions sug = new Suggestions();
+			sug.setCONTENT(rs.getString("SUGGESTION_VALUE"));
+			sug.setSuggestions_Id(rs.getInt("USER_ID"));
+			
+			suggestions.add(sug);
+
+		}
+		return suggestions;
 	}
 	
 	

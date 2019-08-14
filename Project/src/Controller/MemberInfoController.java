@@ -29,8 +29,8 @@ public class MemberInfoController implements Initializable{
 
 public void MemberInfo(ActionEvent event) throws SQLException {
 	Connection conn = DAO.getConnect();
-	user= UserDAO.getInstance().selectOne(conn, user.getUser_Id());
-
+//	user= UserDAO.getInstance().selectOne(conn, user.getUser_Id());
+	
 	userId.setText(user.getUser_Id());
 	userPw.setText(user.getUser_Pw());
 	userSalePoint.setText(String.valueOf(user.getSale_Point()));
