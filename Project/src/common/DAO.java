@@ -13,7 +13,7 @@ public class DAO {
 		///////////////////
 		String user = "hr";
 		String pw = "hr";
-		String url = "jdbc:oracle:thin:@192.168.0.18:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		///////////////////
 		Properties prop = new Properties();
 		String path = PropertiesExample.class
