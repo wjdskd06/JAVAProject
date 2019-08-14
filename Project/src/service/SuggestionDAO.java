@@ -21,11 +21,11 @@ public class SuggestionDAO  {
 		try {
 		 conn = DAO.getConnect();
 		String sql = "insert into SUGGESTIONS(SUGGESTIONS_ID, USER_ID, SUGGESTION_DATE,SUGGESTION_VALUE,SUCCESS)"
-						+"values(?,?,sysdate,?,'check')";
+						+"values(?,'0',sysdate,?,'check')";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, sug.getSuggestions_Id());//SEQ
-		pstmt.setInt(2, sug.getUser_Id());//??
-		pstmt.setString(3, sug.getCONTENT());
+		//pstmt.setInt(2, sug.getUser_Id());//??
+		pstmt.setString(2, sug.getCONTENT());
 		pstmt.executeUpdate();
 		} catch (SQLException e) {
 			

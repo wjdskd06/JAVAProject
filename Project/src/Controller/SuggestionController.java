@@ -36,7 +36,8 @@ public class SuggestionController {
 
 		Suggestions sug = new Suggestions();
 		sug.setCONTENT(sugtext.getText());
-		
+		sug.setUser_Id(1);
+		sug.setSuggestions_Id(1);
 		SuggestionDAO.getInstance().insertSug(sug);
 
 		sugtext.setText("");
