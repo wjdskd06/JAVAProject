@@ -1,6 +1,12 @@
 package model;
 
 public class History {
+	@Override
+	public String toString() {
+		return "History [history=" + history + ", start_Time=" + start_Time + ", end_Time=" + end_Time + ", user_code="
+				+ user_code + ", location_Id=" + location_Id + ", sys_Use=" + sys_Use + ", update_Date=" + update_Date
+				+ "]";
+	}
 	int history;  
 	String start_Time; 
 	String end_Time; 

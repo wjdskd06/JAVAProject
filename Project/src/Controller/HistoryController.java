@@ -17,13 +17,15 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import model.History;
+import service.HistoryImpl;
 
 public class HistoryController implements Initializable {
 	@FXML GridPane gridPane;
 	String yyddmm;
-	String location;
-	String startTime;
-	String endTime;
+	String location_Id;
+	String start_Time;
+	String end_Time;
 	Label[][] labelArray;
 
 	@FXML DatePicker dp;
@@ -36,9 +38,8 @@ public class HistoryController implements Initializable {
 			for (int locationset = 0; locationset < labelArray[timeset].length; locationset++) {
 				if(e.getSource().equals(labelArray[timeset][locationset]))
 				{
-					location = String.valueOf(locationset);
+					location_Id = (String.valueOf(locationset));
 					startEndTimeSet(timeset);//start and endTime String Set;
-					System.out.println(location + "  " + startTime + endTime);
 					break;
 				}
 
@@ -50,36 +51,36 @@ public class HistoryController implements Initializable {
 	private void startEndTimeSet(int value) {
 		switch (value) {
 		case 0:
-			startTime = "10";
-			endTime = "12";
+			start_Time = "10";
+			end_Time = "12";
 			break;
 		case 1:
-			startTime = "12";
-			endTime = "14";
+			start_Time = "12";
+			end_Time = "14";
 			break;
 		case 2:
-			startTime = "14";
-			endTime = "16";
+			start_Time = "14";
+			end_Time = "16";
 			break;
 		case 3:
-			startTime = "16";
-			endTime = "18";
+			start_Time = "16";
+			end_Time = "18";
 			break;
 		case 4:
-			startTime = "18";
-			endTime = "20";
+			start_Time = "18";
+			end_Time = "20";
 			break;
 		case 5:
-			startTime = "20";
-			endTime = "22";
+			start_Time = "20";
+			end_Time = "22";
 			break;
 		case 6:
-			startTime = "22";
-			endTime = "24";
+			start_Time = "22";
+			end_Time = "24";
 			break;
 		default:
-			startTime = "";
-			endTime = "";
+			start_Time = "";
+			end_Time = "";
 			break;
 		}
 	}
@@ -109,5 +110,27 @@ public class HistoryController implements Initializable {
 	private void setyyddmm() {
 		DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
 		yyddmm = dp.getValue().format(formatter);
+	}
+	
+	@FXML
+	public void InsertHistory() {
+//		int history;  
+//		String start_Time; 
+//		String end_Time; 
+//		int user_code; // need to -database search CONSTRAINT FK_user FOREIGN KEY(USER_CODE) REFERENCES user1(USER_CODE) 
+//		int location_Id; // need to -databased search CONSTRAINT FK_location FOREIGN KEY(LOCATION_ID)	REFERENCES location(LOCATION_ID )
+//		boolean sys_Use; // database in  SYS_USE CHAR(1) NOT NULL
+//		String update_Date; // database in data type;
+		History history_Type = new History();
+		history_Type.setStart_Time(yyddmm+start_Time);
+		history_Type.setEnd_Time(yyddmm+end_Time);
+		history_Type.setLocation_Id(Integer.parseInt(location_Id));
+		history_Type.setSys_Use(false);
+		history_Type.setUser_code(UserRootController.user.getUser_Code());
+		
+		
+		HistoryImpl historyImpl = new HistoryImpl();
+		historyImpl.insert(history_Type);
+		//historyImpl.insert(history);
 	}
 }
