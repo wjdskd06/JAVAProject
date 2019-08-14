@@ -10,8 +10,10 @@ public interface HistoryService {
 	boolean delete(int history);//this history = database history datatype = number type
 
 	History selectOneUserId(int userId);
-	
+
 	History selectOne(int history);//this history = database history datatype = number type
 
 	List<History> selectAll();
+	List<History> selectDateAll(String date);
+	List<History> selectDateUser(String date,User user);
 }
