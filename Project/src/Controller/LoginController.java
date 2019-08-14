@@ -86,7 +86,11 @@ public class LoginController {
 //        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
           primaryStage.setScene(scene);
           primaryStage.show();
+         
     }
+    
+    
+
 }
 
 
