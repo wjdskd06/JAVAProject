@@ -1,5 +1,6 @@
 package Controller;
 
+import common.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,6 +65,8 @@ public class LoginController {
     	        //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     	        primaryStage.setScene(scene);
     	        primaryStage.show();
+    	        UserRootController.user=UserDAO.getInstance().selectOne(DAO.getConnect(), txtUserName.getText());
+    	        
     	}
     		
 //    if(txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")){

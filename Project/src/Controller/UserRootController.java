@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import model.Suggestions;
+import model.User;
 import service.SuggestionDAO;
 
 public class UserRootController {
@@ -30,7 +31,7 @@ public class UserRootController {
 	@FXML
 	Button btnSuggestionMenu;
 
-
+	public static User user;
 
 	@FXML
 	public void Reservation(ActionEvent actionevent) { // open window

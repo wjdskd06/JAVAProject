@@ -92,7 +92,7 @@ public class UserDAO {
 
 	public User selectOne(Connection conn, String user_id) throws SQLException {// user id != user code but please
 																				// primary key
-		User user = null;
+		User user = new User();
 		String sql = "select * from user1 where user_id = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
@@ -106,6 +106,7 @@ public class UserDAO {
 			user.setSale_Point(rs.getInt("SALE_POINT"));
 			user.setUser_Type(rs.getString("USER_TYPE"));
 			user.setHire_Date(rs.getString("HIRE_DATE"));
+			
 		}
 		return user;
 	}
