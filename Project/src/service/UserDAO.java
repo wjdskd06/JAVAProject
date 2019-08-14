@@ -161,10 +161,12 @@ public class UserDAO {
 
 	public boolean Login(String UserId, String UserPw) {
 		Connection conn = DAO.getConnect();
-		String sql = "select USER_ID, USER_PW " + "from user1" + "where user_id = ? " + "and user_pw = ?";
+		String sql = "select USER_ID, USER_PW from user1 " + "where user_id = ? " + "and user_pw = ?";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, UserId);
+			pstmt.setString(2, UserPw);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				return true;

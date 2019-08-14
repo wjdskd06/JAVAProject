@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import service.UserDAO;
 
 public class LoginController {
 
@@ -55,15 +56,22 @@ public class LoginController {
 	}
 */
     public void Login(ActionEvent event) throws Exception{
-    if(txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")){
-        lblStatus.setText("Login Success");
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/UserGUI.fxml"));
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }else{
+    	if(UserDAO.getInstance().Login(txtUserName.getText(), txtPassword.getText())) {
+    		 lblStatus.setText("Login Success");
+    	        Stage primaryStage = new Stage();
+    	        Parent root = FXMLLoader.load(getClass().getResource("../view/UserGUI.fxml"));
+    	        Scene scene = new Scene(root);
+    	        //scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	        primaryStage.setScene(scene);
+    	        primaryStage.show();
+    	}
+    		
+//    if(txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")){
+//       
+//        
+//    }
+    
+    else{
         lblStatus.setText("Login Failed");
     }
 }
