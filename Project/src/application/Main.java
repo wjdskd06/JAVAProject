@@ -26,10 +26,10 @@ public class Main extends Application {
 
 	public void initRootLayout() {
 		try {
-			rootLayout = FXMLLoader.load(getClass().getResource("../view/UserGUI.fxml"));// ../ -> location find
-			Scene scene = new Scene(rootLayout, 350, 100);
+			rootLayout = FXMLLoader.load(getClass().getResource("../view/Login1.fxml"));// ../ -> location find
+			Scene scene = new Scene(rootLayout, 300, 300);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setTitle("scene");
+			primaryStage.setTitle("Login");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
