@@ -58,7 +58,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 
-		return 99999; // error
+		return 1; // error
 	}
 
 	public void update(Connection conn, User user) throws SQLException {

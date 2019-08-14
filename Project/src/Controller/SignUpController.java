@@ -22,55 +22,41 @@ public class SignUpController {
 
 	@FXML
 	Button btnSummit;
-    @FXML
-    private Label lblStatus;
-    
-    @FXML
-    private TextField txtUserName;
-    
-    @FXML
-    private TextField txtPassword;
+	@FXML
+	private Label lblStatus;
 
+	@FXML
+	private TextField txtUserName;
 
-	
-/*	@FXML
-	public void Login(ActionEvent actionevent) { // open window
-		try {
-			AnchorPane login = FXMLLoader.load(getClass().getResource("../view/UserGUI.fxml"));
-			Stage primarystage = (Stage) btnLogin.getScene().getWindow();
+	@FXML
+	private TextField txtPassword;
 
-			Stage dialog = new Stage(StageStyle.UTILITY);
-			dialog.initModality(Modality.WINDOW_MODAL);
-			dialog.initOwner(primarystage);
-
-			Scene scene = new Scene(login);
-			dialog.setScene(scene);
-			dialog.setResizable(false);
-			dialog.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
+	/*
+	 * @FXML public void Login(ActionEvent actionevent) { // open window try {
+	 * AnchorPane login =
+	 * FXMLLoader.load(getClass().getResource("../view/UserGUI.fxml")); Stage
+	 * primarystage = (Stage) btnLogin.getScene().getWindow();
+	 * 
+	 * Stage dialog = new Stage(StageStyle.UTILITY);
+	 * dialog.initModality(Modality.WINDOW_MODAL); dialog.initOwner(primarystage);
+	 * 
+	 * Scene scene = new Scene(login); dialog.setScene(scene);
+	 * dialog.setResizable(false); dialog.show(); } catch (Exception e) {
+	 * e.printStackTrace();
+	 * 
+	 * } }
+	 */
+	public void SignUp(ActionEvent event) throws Exception {
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("../view/Login1.fxml"));
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		Connection conn = DAO.getConnect();
+		User user = new User();
+		user.setUser_Id(txtUserName.getText());
+		user.setUser_Pw(txtPassword.getText());
+		UserDAO.getInstance().insert(conn, user);
+		
 	}
-*/
-    public void SignUp(ActionEvent event) throws Exception{
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/Login1.fxml"));
-        Scene scene = new Scene(root);
-//        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        Connection conn = DAO.getConnect();
-        User user = new User();
-        user.setUser_Id(txtUserName.getText());
-        user.setUser_Pw(txtPassword.getText());
-        UserDAO.getInstance().insert(conn, user);
-    }
 }
-
-
-
-	
-	
-	
-	
