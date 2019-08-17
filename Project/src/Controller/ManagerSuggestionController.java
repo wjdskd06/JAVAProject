@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import common.DAO;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,13 +24,13 @@ public class ManagerSuggestionController implements Initializable {
 	@FXML
 	TableColumn<Suggestions,IntegerProperty> calNum;
 	@FXML
-	TableColumn<Suggestions,Integer> calUserId;
+	TableColumn<Suggestions,IntegerProperty> calUserId;
 	@FXML
-	TableColumn<Suggestions,String> calContent;
+	TableColumn<Suggestions,StringProperty> calContent;
 	@FXML
-	TableColumn<Suggestions,String> calDate;
+	TableColumn<Suggestions,StringProperty> calDate;
 	@FXML
-	TableColumn<Suggestions,String> calResult;
+	TableColumn<Suggestions,StringProperty> calResult;
 	Connection conn = DAO.getConnect();
 	ObservableList<Suggestions> suggestions = SuggestionDAO.getInstance().selectAll(DAO.getConnect());
 public void ManagerSuggestion(ActionEvent event) {
