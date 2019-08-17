@@ -34,7 +34,7 @@ public class Main extends Application {
 			primaryStage.show();
 
 			primaryStage.setScene(scene);
-			primaryStage.show();// 윈도우 보여주기
+			primaryStage.show();// �쐢�룄�슦 蹂댁뿬二쇨린
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

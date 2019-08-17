@@ -3,36 +3,42 @@ package Controller;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import common.DAO;
+import javafx.beans.property.IntegerProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import model.Suggestions;
 import service.SuggestionDAO;
 
 public class ManagerSuggestionController implements Initializable {
 	
 	@FXML
-	TableColumn Number;
+	TableView<Suggestions> mytable;
 	@FXML
-	TableColumn UserId;
+	TableColumn<Suggestions,IntegerProperty> calNum;
 	@FXML
-	TableColumn Suggestion;
+	TableColumn<Suggestions,Integer> calUserId;
 	@FXML
-	TableColumn Date;
+	TableColumn<Suggestions,String> calContent;
 	@FXML
-	TableColumn Result;
-	
-	List<Suggestions> suggestions;
-	
+	TableColumn<Suggestions,String> calDate;
+	@FXML
+	TableColumn<Suggestions,String> calResult;
+	Connection conn = DAO.getConnect();
+	ObservableList<Suggestions> suggestions = SuggestionDAO.getInstance().selectAll(DAO.getConnect());
 public void ManagerSuggestion(ActionEvent event) {
 	Connection conn = DAO.getConnect();
 	try {
 		suggestions = SuggestionDAO.getInstance().selectAll(DAO.getConnect());
+		
+		
+		
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -48,14 +54,9 @@ public void ManagerSuggestion(ActionEvent event) {
 
 @Override
 public void initialize(URL location, ResourceBundle resources) {
-	Connection conn = DAO.getConnect();
-	try {
-		suggestions = SuggestionDAO.getInstance().selectAll(DAO.getConnect());
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	System.out.println(suggestions.get(0).getCONTENT());
+	
+	calNum.setCellValueFactory(cellData -> cellData.getValue().getSuggestions_IdProperty());
+	mytable.setItems(suggestions);
 }
 	
 	

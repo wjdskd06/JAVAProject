@@ -1,6 +1,8 @@
 package model;
 
 public class History {
+	
+	
 	int history;  
 	String start_Time; 
 	String end_Time; 

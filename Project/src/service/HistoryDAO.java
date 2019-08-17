@@ -32,7 +32,7 @@ public class HistoryDAO {
 				+ "values(?,?,?,?,?,?,sysdate)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, returnMaxHistory(conn));
+		pstmt.setInt(1, returnMaxHistory(conn)+1);
 		pstmt.setString(2, history.getStart_Time());
 		pstmt.setString(3, history.getEnd_Time());
 		pstmt.setInt(4, history.getUser_code());
@@ -48,7 +48,10 @@ public class HistoryDAO {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
-			return rs.getInt(0);
+			if(rs.next()) {
+				return rs.getInt("max(HISTORY)");	
+			}
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();

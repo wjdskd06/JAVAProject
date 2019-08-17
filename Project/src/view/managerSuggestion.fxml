@@ -10,13 +10,13 @@
 fx:controller="Controller.ManagerSuggestionController">
    <children>
       <Label layoutX="176.0" layoutY="14.0" text="건의 사항" />
-      <TableView layoutY="50.0" prefHeight="200.0" prefWidth="403.0">
+      <TableView fx:id="mytable" layoutY="50.0" prefHeight="200.0" prefWidth="403.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="번호" />
-          <TableColumn prefWidth="75.0" text="유저 ID" />
-            <TableColumn prefWidth="75.0" text="건의 내용" />
-            <TableColumn prefWidth="75.0" text="날짜" />
-            <TableColumn prefWidth="102.0" text="처리 여부" />
+          <TableColumn fx:id="calNum" prefWidth="75.0" text="번호"/>
+          <TableColumn fx:id="calUserId" prefWidth="75.0" text="유저 ID" />
+            <TableColumn fx:id="calContent" prefWidth="75.0" text="건의 내용" />
+            <TableColumn fx:id="calDate" prefWidth="75.0" text="날짜" />
+            <TableColumn fx:id="calResult" prefWidth="102.0" text="처리 여부" />
         </columns>
       </TableView>
    </children>
