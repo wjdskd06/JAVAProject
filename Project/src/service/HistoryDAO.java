@@ -28,16 +28,18 @@ public class HistoryDAO {
 //			SYS_USE	CHAR(1 BYTE)
 //			UPDATE_DATE	DATE
 
-		String sql = "insert into HISTORY(HISTORY,START_TIME,END_TIME,USER_CODE,LOCATION_ID,SYS_USE,UPDATE_DATE) "
-				+ "values(?,?,?,?,?,?,sysdate)";
+		String sql = "insert into HISTORY(HISTORY,START_TIME,END_TIME," + "USER_CODE,LOCATION_ID,SYS_USE,"
+				+ "UPDATE_DATE) " + "values(?,?,?,?,?,?,sysdate)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, returnMaxHistory(conn)+1);
+		pstmt.setInt(1, returnMaxHistory(conn) + 1);
 		pstmt.setString(2, history.getStart_Time());
 		pstmt.setString(3, history.getEnd_Time());
 		pstmt.setInt(4, history.getUser_code());
 		pstmt.setInt(5, history.getLocation_Id());
 		pstmt.setString(6, String.valueOf((history.isSys_Use())));
+		System.out.println(history.getLocation_Id());
 		int r = pstmt.executeUpdate();
 		System.out.println(r + "건  삽입 완료");
 
@@ -48,10 +50,10 @@ public class HistoryDAO {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return rs.getInt("max(HISTORY)");	
+			if (rs.next()) {
+				return rs.getInt("max(HISTORY)");
 			}
-			
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();

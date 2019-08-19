@@ -11,9 +11,9 @@ import java.util.Properties;
 public class DAO {
 	public static Connection getConnect() {
 		///////////////////
-		String user = "hr";
-		String pw = "hr";
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "";
+		String pw = "";
+		String url = "";
 		///////////////////
 		Properties prop = new Properties();
 		String path = PropertiesExample.class
