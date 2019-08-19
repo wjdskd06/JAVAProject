@@ -32,7 +32,7 @@ public class ManagerSuggestionController implements Initializable {
 	private TableColumn<Suggestions,String> calDate;
 	@FXML
 	private TableColumn<Suggestions,String> calResult;
-	
+	int a;
 	ObservableList<Suggestions> suggestions = null;
 	
 public void ManagerSuggestion(ActionEvent event) {
