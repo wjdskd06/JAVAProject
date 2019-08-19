@@ -18,5 +18,5 @@ public interface HistoryService {
 
 	List<History> selectAll();
 	List<History> selectDateAll(String date);
-	ObservableList<History> selectDateUser(String date, User user);
+	List<History> selectCancelAbleDateUser(String date, User user);
 }

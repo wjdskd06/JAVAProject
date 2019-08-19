@@ -40,9 +40,9 @@ public class HistoryDAO {
 		pstmt.setInt(1, returnMaxHistory(conn) + 1);
 		pstmt.setString(2, history.getStart_Time());
 		pstmt.setString(3, history.getEnd_Time());
-		pstmt.setInt(4, history.getUser_code());
+		pstmt.setInt(4, history.getUser_Code());
 		pstmt.setInt(5, history.getLocation_Id());
-		pstmt.setString(6, String.valueOf((history.isSys_Use())));
+		pstmt.setString(6,history.getSys_Use());
 		System.out.println(history.getLocation_Id());
 		int r = pstmt.executeUpdate();
 		System.out.println(r + "건  삽입 완료");
@@ -75,9 +75,9 @@ public class HistoryDAO {
 
 		pstmt.setString(1, history.getStart_Time());
 		pstmt.setString(2, history.getEnd_Time());
-		pstmt.setInt(3, history.getUser_code());
+		pstmt.setInt(3, history.getUser_Code());
 		pstmt.setInt(4, history.getLocation_Id());
-		pstmt.setString(5, String.valueOf((history.isSys_Use())));
+		pstmt.setString(5, history.getSys_Use());
 		pstmt.setInt(6, history.getHistory());
 
 		int r = pstmt.executeUpdate();
@@ -112,9 +112,9 @@ public class HistoryDAO {
 				history.setHistory(rs.getInt("HISTORY"));
 				history.setStart_Time(rs.getString("START_TIME"));
 				history.setEnd_Time(rs.getString("END_TIME"));
-				history.setUser_code(rs.getInt("USER_CODE"));
+				history.setUser_Code(rs.getInt("USER_CODE"));
 				history.setLocation_Id(rs.getInt("LOCATION_ID"));
-				history.setSys_Use(Boolean.valueOf((rs.getString("SYS_USE"))));
+				history.setSys_Use(rs.getString("SYS_USE"));
 				history.setUpdate_Date(rs.getString("UPDATE_DATE"));
 
 				historys.add(history);
@@ -128,38 +128,48 @@ public class HistoryDAO {
 		return historys;
 	}
 
-	public ObservableList<History> selectDateUser(Connection conn, String date, User user) {
-		ObservableList<History> historys = FXCollections.observableArrayList();
+	public List<History> selectCancelAbleDateUser(Connection conn, String date, User user) {
+		List<History> historys = new ArrayList<History>();
 		String subStr = date.substring(0, 8);
-		String sql = "select * from HISTORY" + "where substr('START_TIME',0,8) = ? " + "and substr('END_TIME',0,8) = ?"
-				+ "and USER_CODE = ? ";
+		String sql = "select * from history where start_Time > ? and user_code = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, subStr);
-			pstmt.setString(2, subStr);
-			pstmt.setInt(3, user.getUser_Code());
+			pstmt.setInt(2, user.getUser_Code());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				History history = new History(new SimpleIntegerProperty(rs.getInt("HISTORY")),
-						new SimpleStringProperty(rs.getString("START_TIME")),
-						new SimpleStringProperty(rs.getString("END_TIME")),
-						new SimpleIntegerProperty(rs.getInt("USER_CODE")),
-						new SimpleIntegerProperty(rs.getInt("LOCATION_ID")),
-						new SimpleStringProperty(rs.getString("SYS_USE")),
-						new SimpleStringProperty(rs.getString("UPDATE_DATE"))
+				History history = new History();
+				history.setHistory(rs.getInt("HISTORY"));
+				history.setStart_Time(rs.getString("START_TIME"));
+				history.setEnd_Time(rs.getString("END_TIME"));
+				history.setUser_Code(rs.getInt("USER_CODE"));
+				history.setLocation_Id(rs.getInt("LOCATION_ID"));
+				history.setSys_Use(rs.getString("SYS_USE"));
+				history.setUpdate_Date(rs.getString("UPDATE_DATE"));
+			
+//						new History(new SimpleIntegerProperty(rs.getInt("HISTORY")),
+//						new SimpleStringProperty(rs.getString("START_TIME")),
+//						new SimpleStringProperty(rs.getString("END_TIME")),
+//						new SimpleIntegerProperty(rs.getInt("USER_CODE")),
+//						new SimpleIntegerProperty(rs.getInt("LOCATION_ID")),
+//						new SimpleStringProperty(rs.getString("SYS_USE")),
+//						new SimpleStringProperty(rs.getString("UPDATE_DATE"))
 
-				);
+				
 
 				historys.add(history);
 			}
 
-		} catch (SQLException e) {
+		}catch(
+
+	SQLException e)
+	{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return historys;
-	}
+	return historys;
+}
 
 }

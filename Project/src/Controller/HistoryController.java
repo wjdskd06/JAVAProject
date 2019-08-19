@@ -214,8 +214,8 @@ public class HistoryController implements Initializable {
 		history_Type.setStart_Time(yyddmm + start_Time);
 		history_Type.setEnd_Time(yyddmm + end_Time);
 		history_Type.setLocation_Id(Integer.parseInt(location_Id));
-		history_Type.setSys_Use(false);
-		history_Type.setUser_code(UserRootController.user.getUser_Code());
+		history_Type.setSys_Use("false");
+		history_Type.setUser_Code(UserRootController.user.getUser_Code());
 
 		impl.insert(history_Type);
 		SelectDate();

@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.DAO;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.History;
 import model.HistoryService;
 import model.User;
 
-public class HistoryImpl implements HistoryService{
+public class HistoryImpl implements HistoryService {
 
 	@Override
 	public boolean insert(History history) {
@@ -78,17 +77,15 @@ public class HistoryImpl implements HistoryService{
 	}
 
 	@Override
-	public ObservableList<History> selectDateUser(String date, User user) {
+	public List<History> selectCancelAbleDateUser(String date, User user) {
 		Connection conn = DAO.getConnect();
-		ObservableList<History>list = FXCollections.observableArrayList();
+		List<History> list = new ArrayList<History>();
 		try {
-			return HistoryDAO.getInstance().selectDateUser(conn, date, user);
+			return HistoryDAO.getInstance().selectCancelAbleDateUser(conn, date, user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-
-
 
 }
