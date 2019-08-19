@@ -219,6 +219,9 @@ public class HistoryController implements Initializable {
 
 		impl.insert(history_Type);
 		SelectDate();
+		
+		//fuckyou;
+		
 		labelColorChange();
 	}
 }
