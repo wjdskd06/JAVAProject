@@ -1,6 +1,9 @@
 package model;
 
+import java.sql.Connection;
 import java.util.List;
+
+import javafx.collections.ObservableList;
 
 public interface HistoryService {
 	boolean insert(History history);
@@ -15,5 +18,5 @@ public interface HistoryService {
 
 	List<History> selectAll();
 	List<History> selectDateAll(String date);
-	List<History> selectDateUser(String date,User user);
+	ObservableList<History> selectDateUser(String date, User user);
 }

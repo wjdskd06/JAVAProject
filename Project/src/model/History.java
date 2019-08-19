@@ -1,12 +1,10 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
+
 public class History {
-	@Override
-	public String toString() {
-		return "History [history=" + history + ", start_Time=" + start_Time + ", end_Time=" + end_Time + ", user_code="
-				+ user_code + ", location_Id=" + location_Id + ", sys_Use=" + sys_Use + ", update_Date=" + update_Date
-				+ "]";
-	}
+	
 	int history;  
 	String start_Time; 
 	String end_Time; 
@@ -14,6 +12,34 @@ public class History {
 	int location_Id; // need to -databased search CONSTRAINT FK_location FOREIGN KEY(LOCATION_ID)	REFERENCES location(LOCATION_ID )
 	boolean sys_Use; // database in  SYS_USE CHAR(1) NOT NULL
 	String update_Date; // database in data type;
+	
+	IntegerProperty history_Property;
+	StringProperty start_Time_Property;
+	StringProperty end_Time_Property;
+	IntegerProperty user_Code_Property;
+	IntegerProperty location_Id_Property;
+	StringProperty sys_Use_Property;
+	StringProperty update_Date_Property;
+	
+	
+	public History() {
+		super();
+	}
+
+
+	public History(IntegerProperty history_Property, StringProperty start_Time_Property,
+			StringProperty end_Time_Property, IntegerProperty user_Code_Property, IntegerProperty location_Id_Property,
+			StringProperty sys_Use_Property, StringProperty update_Date_Property) {
+
+		this.history_Property = history_Property;
+		this.start_Time_Property = start_Time_Property;
+		this.end_Time_Property = end_Time_Property;
+		this.user_Code_Property = user_Code_Property;
+		this.location_Id_Property = location_Id_Property;
+		this.sys_Use_Property = sys_Use_Property;
+		this.update_Date_Property = update_Date_Property;
+	}
+	
 	
 	public int getHistory() {
 		return history;
@@ -57,5 +83,10 @@ public class History {
 	public void setUpdate_Date(String update_Date) {
 		this.update_Date = update_Date;
 	}
-	
+	@Override
+	public String toString() {
+		return "History [history=" + history + ", start_Time=" + start_Time + ", end_Time=" + end_Time + ", user_code="
+				+ user_code + ", location_Id=" + location_Id + ", sys_Use=" + sys_Use + ", update_Date=" + update_Date
+				+ "]";
+	}
 }

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.DAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.History;
 import model.HistoryService;
 import model.User;
@@ -76,9 +78,9 @@ public class HistoryImpl implements HistoryService{
 	}
 
 	@Override
-	public List<History> selectDateUser(String date, User user) {
+	public ObservableList<History> selectDateUser(String date, User user) {
 		Connection conn = DAO.getConnect();
-		List<History>list = new ArrayList<History>();
+		ObservableList<History>list = FXCollections.observableArrayList();
 		try {
 			return HistoryDAO.getInstance().selectDateUser(conn, date, user);
 		} catch (Exception e) {
@@ -86,5 +88,7 @@ public class HistoryImpl implements HistoryService{
 		}
 		return list;
 	}
+
+
 
 }

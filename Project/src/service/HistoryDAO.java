@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.History;
 import model.User;
 
@@ -96,13 +100,12 @@ public class HistoryDAO {
 
 	public List<History> selectDateAll(Connection conn, String date) {
 		List<History> historys = new ArrayList<History>();
-		String subStr = date.substring(0, 8);
-		String sql = "select * from HISTORY" + "where substr('START_TIME',0,8) = ? " + "and substr('END_TIME',0,8) = ?";
+		String sql = "select * from HISTORY " + "where start_time like ? " + "and end_time like ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, subStr);
-			pstmt.setString(2, subStr);
+			pstmt.setString(1, date);
+			pstmt.setString(2, date);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				History history = new History();
@@ -125,8 +128,8 @@ public class HistoryDAO {
 		return historys;
 	}
 
-	public List<History> selectDateUser(Connection conn, String date, User user) {
-		List<History> historys = new ArrayList<History>();
+	public ObservableList<History> selectDateUser(Connection conn, String date, User user) {
+		ObservableList<History> historys = FXCollections.observableArrayList();
 		String subStr = date.substring(0, 8);
 		String sql = "select * from HISTORY" + "where substr('START_TIME',0,8) = ? " + "and substr('END_TIME',0,8) = ?"
 				+ "and USER_CODE = ? ";
@@ -138,14 +141,15 @@ public class HistoryDAO {
 			pstmt.setInt(3, user.getUser_Code());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				History history = new History();
-				history.setHistory(rs.getInt("HISTORY"));
-				history.setStart_Time(rs.getString("START_TIME"));
-				history.setEnd_Time(rs.getString("END_TIME"));
-				history.setUser_code(rs.getInt("USER_CODE"));
-				history.setLocation_Id(rs.getInt("LOCATION_ID"));
-				history.setSys_Use(Boolean.valueOf((rs.getString("SYS_USE"))));
-				history.setUpdate_Date(rs.getString("UPDATE_DATE"));
+				History history = new History(new SimpleIntegerProperty(rs.getInt("HISTORY")),
+						new SimpleStringProperty(rs.getString("START_TIME")),
+						new SimpleStringProperty(rs.getString("END_TIME")),
+						new SimpleIntegerProperty(rs.getInt("USER_CODE")),
+						new SimpleIntegerProperty(rs.getInt("LOCATION_ID")),
+						new SimpleStringProperty(rs.getString("SYS_USE")),
+						new SimpleStringProperty(rs.getString("UPDATE_DATE"))
+
+				);
 
 				historys.add(history);
 			}
