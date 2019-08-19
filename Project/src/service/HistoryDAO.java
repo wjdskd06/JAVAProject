@@ -28,12 +28,12 @@ public class HistoryDAO {
 //			SYS_USE	CHAR(1 BYTE)
 //			UPDATE_DATE	DATE
 
-		String sql = "insert into HISTORY(HISTORY,START_TIME,END_TIME,"
-				+ "USER_CODE,LOCATION_ID,SYS_USE,"
-				+ "UPDATE_DATE) " 
-				+"values(?,?,?,?,?,?,sysdate)";
+		String sql = "insert into HISTORY(HISTORY,START_TIME,END_TIME," + "USER_CODE,LOCATION_ID,SYS_USE,"
+				+ "UPDATE_DATE) " + "values(?,?,?,?,?,?,sysdate)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, returnMaxHistory(conn)+1);
+
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, returnMaxHistory(conn) + 1);
 		pstmt.setString(2, history.getStart_Time());
 		pstmt.setString(3, history.getEnd_Time());
 		pstmt.setInt(4, history.getUser_code());
@@ -51,8 +51,9 @@ public class HistoryDAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return rs.getInt(1);
+				return rs.getInt("max(HISTORY)");
 			}
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();
