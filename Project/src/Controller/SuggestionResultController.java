@@ -34,9 +34,8 @@ public class SuggestionResultController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		Num.setCellValueFactory(cellData -> cellData.getValue().getSuggestions_IdProperty().asObject()); //번호	
-		Result.setCellValueFactory(cellData -> cellData.getValue().getCONTENTProperty()); //건의 내용
-		Content.setCellValueFactory(cellData -> cellData.getValue().getSuccessProperty()); // 처리 여부
-		
+		Result.setCellValueFactory(cellData -> cellData.getValue().getSuccessProperty()); //건의 내용
+		Content.setCellValueFactory(cellData -> cellData.getValue().getCONTENTProperty()); // 처리 여부
 		Connection conn = DAO.getConnect();
 		try {
 			suggestions = SuggestionDAO.getInstance().select(DAO.getConnect());

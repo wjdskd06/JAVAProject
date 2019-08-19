@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Suggestions {
@@ -11,19 +12,20 @@ public class Suggestions {
 	StringProperty CONTENTProperty;
 	
 	public Suggestions() {
-		
+		successProperty = new SimpleStringProperty();
+		CONTENTProperty = new SimpleStringProperty();
 	}
 	
-	public Suggestions(int suggestions_Id, int user_Id, String suggestion_Date, String success, String cONTENT) {
+	public Suggestions(int suggestions_Id, int user_Id, String suggestion_Date, String cONTENT, String success) {
 		super();
 		this.suggestions_Id = suggestions_Id;
 		this.user_Id = user_Id;
 		this.suggestion_Date = suggestion_Date;
-		this.success = success;
 		CONTENT = cONTENT;
+		this.success = success;
 	}
 
-	public Suggestions(IntegerProperty suggestions_IdProperty,IntegerProperty user_IdProperty,StringProperty suggestion_DateProperty,StringProperty successProperty,StringProperty CONTENTProperty) {
+	public Suggestions(IntegerProperty suggestions_IdProperty,IntegerProperty user_IdProperty,StringProperty suggestion_DateProperty,StringProperty CONTENTProperty,StringProperty successProperty) {
 		this.suggestions_IdProperty = suggestions_IdProperty;
 		this.user_IdProperty = user_IdProperty;
 		this.suggestion_DateProperty = suggestion_DateProperty;
@@ -89,6 +91,7 @@ public class Suggestions {
 		return success;
 	}
 	public void setSuccess(String success) {
+		this.successProperty.set(success);
 		this.success = success;
 	}
 	public String getCONTENT() {
@@ -96,6 +99,13 @@ public class Suggestions {
 	}
 	public void setCONTENT(String cONTENT) {
 		CONTENT = cONTENT;
+		this.CONTENTProperty.set(cONTENT);
+	}
+
+	@Override
+	public String toString() {
+		return "Suggestions [suggestions_Id=" + suggestions_Id + ", user_Id=" + user_Id + ", suggestion_Date="
+				+ suggestion_Date + ", success=" + success + ", CONTENT=" + CONTENT + "]";
 	}
 
 

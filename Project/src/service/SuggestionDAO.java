@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import model.Suggestions;
 
 public class SuggestionDAO {
@@ -28,11 +29,12 @@ public class SuggestionDAO {
 		try {
 			conn = DAO.getConnect();
 			String sql = "insert into SUGGESTIONS(SUGGESTIONS_ID, USER_ID, SUGGESTION_DATE,SUGGESTION_VALUE,SUCCESS)"
-					+ "values(?,?,sysdate,?,'check')";
+					+ "values(?,?,sysdate,?,'Un')";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, returnMaxSuggestion(conn) + 1);// SEQ
 			pstmt.setInt(2, sug.getUser_Id());// ??
 			pstmt.setString(3, sug.getCONTENT());
+			//pstmt.setString(4, sug.getSuccess());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 
@@ -125,5 +127,29 @@ public class SuggestionDAO {
 		}
 		return suggestions;
 	}
+	public void Update(Suggestions sug) {
+		Connection conn = null;
+		try {
+			conn = DAO.getConnect();
+			String sql = "update suggestions set Success = ? where suggestions_id = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sug.getSuccess());
+			pstmt.setInt(2, sug.getSuggestions_Id());
+			pstmt.executeUpdate();
+			System.out.println("확인 되었습니다."+ sug);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+	}
+	
 
 }
