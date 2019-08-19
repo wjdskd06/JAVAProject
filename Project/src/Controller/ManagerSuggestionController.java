@@ -25,15 +25,14 @@ public class ManagerSuggestionController implements Initializable {
 	@FXML
 	private TableColumn<Suggestions,Integer> calNum;
 	@FXML
-	private TableColumn<Suggestions,IntegerProperty> calUserId;
+	private TableColumn<Suggestions,Integer> calUserId;
 	@FXML
-	private TableColumn<Suggestions,StringProperty> calContent;
+	private TableColumn<Suggestions,String> calContent;
 	@FXML
-	private TableColumn<Suggestions,StringProperty> calDate;
+	private TableColumn<Suggestions,String> calDate;
 	@FXML
-	private TableColumn<Suggestions,StringProperty> calResult;
+	private TableColumn<Suggestions,String> calResult;
 	
-	int a; 
 	ObservableList<Suggestions> suggestions = null;
 	
 public void ManagerSuggestion(ActionEvent event) {
@@ -50,7 +49,11 @@ public void ManagerSuggestion(ActionEvent event) {
 @Override
 public void initialize(URL location, ResourceBundle resources) {
 
-	calNum.setCellValueFactory(cellData -> cellData.getValue().getSuggestions_IdProperty().asObject());
+	calNum.setCellValueFactory(cellData -> cellData.getValue().getSuggestions_IdProperty().asObject()); //번호
+	calUserId.setCellValueFactory(cellData -> cellData.getValue().getUser_IdProperty().asObject()); //유저 ID
+	calResult.setCellValueFactory(cellData -> cellData.getValue().getCONTENTProperty()); //건의 내용
+	calDate.setCellValueFactory(cellData -> cellData.getValue().getSuggestion_DateProperty()); // 날짜
+	calContent.setCellValueFactory(cellData -> cellData.getValue().getSuccessProperty()); // 처리 여부
 	
 	Connection conn = DAO.getConnect();
 	try {
@@ -59,7 +62,7 @@ public void initialize(URL location, ResourceBundle resources) {
 		
 		
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
+	
 		e.printStackTrace();
 	}
 		

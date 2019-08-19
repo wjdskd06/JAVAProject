@@ -14,6 +14,15 @@ public class Suggestions {
 		
 	}
 	
+	public Suggestions(int suggestions_Id, int user_Id, String suggestion_Date, String success, String cONTENT) {
+		super();
+		this.suggestions_Id = suggestions_Id;
+		this.user_Id = user_Id;
+		this.suggestion_Date = suggestion_Date;
+		this.success = success;
+		CONTENT = cONTENT;
+	}
+
 	public Suggestions(IntegerProperty suggestions_IdProperty,IntegerProperty user_IdProperty,StringProperty suggestion_DateProperty,StringProperty successProperty,StringProperty CONTENTProperty) {
 		this.suggestions_IdProperty = suggestions_IdProperty;
 		this.user_IdProperty = user_IdProperty;
