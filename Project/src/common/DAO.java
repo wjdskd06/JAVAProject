@@ -28,9 +28,9 @@ public class DAO {
 		url = prop.getProperty("url");
 		user = prop.getProperty("user");
 		pw = prop.getProperty("passwd");
-
-		//////////////////
 		Connection conn = null;
+		//////////////////
+
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, pw);

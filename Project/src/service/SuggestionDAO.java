@@ -14,8 +14,10 @@ import model.Suggestions;
 
 
 public class SuggestionDAO  {
-	private static SuggestionDAO instance = new SuggestionDAO();
+
 	public Connection conn;
+	
+	private static SuggestionDAO instance = new SuggestionDAO();	
 	public static SuggestionDAO getInstance()
 	{
 		return instance;

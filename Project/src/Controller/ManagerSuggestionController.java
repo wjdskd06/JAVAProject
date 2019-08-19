@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import application.Main;
 import common.DAO;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
@@ -20,30 +21,22 @@ import service.SuggestionDAO;
 public class ManagerSuggestionController implements Initializable {
 	
 	@FXML
-	TableView<Suggestions> mytable;
+	private TableView<Suggestions> mytable;
 	@FXML
-	TableColumn<Suggestions,IntegerProperty> calNum;
+	private TableColumn<Suggestions,Integer> calNum;
 	@FXML
-	TableColumn<Suggestions,IntegerProperty> calUserId;
+	private TableColumn<Suggestions,IntegerProperty> calUserId;
 	@FXML
-	TableColumn<Suggestions,StringProperty> calContent;
+	private TableColumn<Suggestions,StringProperty> calContent;
 	@FXML
-	TableColumn<Suggestions,StringProperty> calDate;
+	private TableColumn<Suggestions,StringProperty> calDate;
 	@FXML
-	TableColumn<Suggestions,StringProperty> calResult;
-	Connection conn = DAO.getConnect();
-	ObservableList<Suggestions> suggestions = SuggestionDAO.getInstance().selectAll(DAO.getConnect());
+	private TableColumn<Suggestions,StringProperty> calResult;
+	
+	ObservableList<Suggestions> suggestions = null;
+	
 public void ManagerSuggestion(ActionEvent event) {
-	Connection conn = DAO.getConnect();
-	try {
-		suggestions = SuggestionDAO.getInstance().selectAll(DAO.getConnect());
-		
-		
-		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+
 //	Suggestion.setText(suggestions.getCONTENT());
 //	UserId.setText(String.valueOf(suggestions.getUser_Id()));
 	
@@ -55,8 +48,21 @@ public void ManagerSuggestion(ActionEvent event) {
 
 @Override
 public void initialize(URL location, ResourceBundle resources) {
+
+	calNum.setCellValueFactory(cellData -> cellData.getValue().getSuggestions_IdProperty().asObject());
 	
-	calNum.setCellValueFactory(cellData -> cellData.getValue().getSuggestions_IdProperty());
+	Connection conn = DAO.getConnect();
+	try {
+		suggestions = SuggestionDAO.getInstance().selectAll(DAO.getConnect());
+		
+		
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+
 	mytable.setItems(suggestions);
 }
 	
