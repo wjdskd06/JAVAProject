@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="405.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171"
-fx:controller="Controller.ManagerSuggestionController">
+<AnchorPane prefHeight="300.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagerSuggestionController">
    <children>
       <Label layoutX="176.0" layoutY="14.0" text="건의 사항" />
-      <TableView fx:id="mytable" layoutY="50.0" prefHeight="200.0" prefWidth="403.0">
+      <TableView fx:id="mytable" editable="true" layoutY="50.0" prefHeight="200.0" prefWidth="403.0">
         <columns>
-          <TableColumn fx:id="calNum" prefWidth="75.0" text="번호"/>
+          <TableColumn fx:id="calNum" prefWidth="75.0" text="번호" />
           <TableColumn fx:id="calUserId" prefWidth="75.0" text="유저 ID" />
             <TableColumn fx:id="calContent" prefWidth="75.0" text="건의 내용" />
             <TableColumn fx:id="calDate" prefWidth="75.0" text="날짜" />
             <TableColumn fx:id="calResult" prefWidth="102.0" text="처리 여부" />
         </columns>
       </TableView>
+      <Button fx:id="btncheck" onAction="#Update" layoutX="318.0" layoutY="263.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="65.0" text="확인" />
+      <TextField fx:id="TextCheck" layoutX="124.0" layoutY="263.0" prefHeight="23.0" prefWidth="169.0" />
    </children>
 </AnchorPane>
