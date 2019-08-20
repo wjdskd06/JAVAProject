@@ -47,17 +47,29 @@ public class SignUpController {
 	 */
 	public void SignUp(ActionEvent event) throws Exception {
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("../view/Login1.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.show();
+//		Parent root = FXMLLoader.load(getClass().getResource("../view/Login1.fxml"));
+//		Scene scene = new Scene(root);
+//		primaryStage.setScene(scene);
+//		primaryStage.show();
+
 		Connection conn = DAO.getConnect();
 		UserDAO dao = new UserDAO();
 		if(dao.selectOne(conn, txtUserName.getText())  == null) {
 			User user = new User();
 			user.setUser_Id(txtUserName.getText());
 			user.setUser_Pw(txtPassword.getText());
-			UserDAO.getInstance().insert(conn, user);
+			try {
+				UserDAO.getInstance().insert(conn, user);
+				primaryStage = (Stage)btnSummit.getScene().getWindow();
+				primaryStage.close();
+			} catch (Exception e) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("경고");
+				alert.setContentText("정보를 입력하지 않았습니다.");
+				alert.show();
+			}
+			
+			
 				
 		}
 		else{ 
@@ -68,4 +80,5 @@ public class SignUpController {
 			
 		}
 	}
+	
 }

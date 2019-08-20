@@ -21,6 +21,7 @@ public class SuggestionMenuController {
 		try {
 			AnchorPane Suggestion = FXMLLoader.load(getClass().getResource("../view/Suggestion.fxml"));
 			Stage primarystage = (Stage) btnSuggestion.getScene().getWindow();
+			primarystage.close();
 
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
@@ -30,6 +31,8 @@ public class SuggestionMenuController {
 			dialog.setScene(scene);
 			dialog.setResizable(false);
 			dialog.show();
+			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -41,6 +44,7 @@ public class SuggestionMenuController {
 		try {
 			AnchorPane SuggestionResult = FXMLLoader.load(getClass().getResource("../view/SuggestionResult.fxml"));
 			Stage primarystage = (Stage) btnSuggestionResult.getScene().getWindow();
+			primarystage.close();
 
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);

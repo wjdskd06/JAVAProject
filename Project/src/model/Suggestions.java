@@ -21,7 +21,7 @@ public class Suggestions {
 		this.suggestions_Id = suggestions_Id;
 		this.user_Id = user_Id;
 		this.suggestion_Date = suggestion_Date;
-		CONTENT = cONTENT;
+		this.CONTENT = cONTENT;
 		this.success = success;
 	}
 
@@ -62,7 +62,7 @@ public class Suggestions {
 		return CONTENTProperty;
 	}
 	public void setCONTENTProperty(StringProperty cONTENTProperty) {
-		CONTENTProperty = cONTENTProperty;
+		this.CONTENTProperty = cONTENTProperty;
 	}
 	int suggestions_Id; 
 	int user_Id; // database foreign key user1;
@@ -98,7 +98,7 @@ public class Suggestions {
 		return CONTENT;
 	}
 	public void setCONTENT(String cONTENT) {
-		CONTENT = cONTENT;
+		this.CONTENT = cONTENT;
 		this.CONTENTProperty.set(cONTENT);
 	}
 

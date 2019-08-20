@@ -1,5 +1,6 @@
 package Controller;
 
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,7 +19,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import model.Suggestions;
 import service.SuggestionDAO;
@@ -39,6 +42,8 @@ public class ManagerSuggestionController implements Initializable {
 	private TableColumn<Suggestions, String> calResult;
 	@FXML
 	TextField TextCheck;
+	@FXML
+	TextArea contentCheck;
 	
 	@FXML
 	Button btncheck;
@@ -88,5 +93,16 @@ public class ManagerSuggestionController implements Initializable {
 
 		mytable.setItems(suggestions);
 	}
+	@FXML
+	protected void check(MouseEvent event) {
+		contentCheck.setText(mytable.getSelectionModel().getSelectedItem().getCONTENTProperty().get());
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
