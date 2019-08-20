@@ -29,7 +29,7 @@ public class SuggestionDAO {
 		try {
 			conn = DAO.getConnect();
 			String sql = "insert into SUGGESTIONS(SUGGESTIONS_ID, USER_ID, SUGGESTION_DATE,SUGGESTION_VALUE,SUCCESS)"
-					+ "values(?,?,sysdate,?,'Un')";
+					+ "values(?,?,sysdate,?,'Uncheck')";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, returnMaxSuggestion(conn) + 1);// SEQ
 			pstmt.setInt(2, sug.getUser_Id());// ??

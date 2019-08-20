@@ -14,7 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.History;
+import model.User;
 import service.HistoryImpl;
+import service.UserServiceImpl;
 
 public class HistoryCancelController implements Initializable{
 	@FXML
@@ -49,7 +51,18 @@ public class HistoryCancelController implements Initializable{
 	
 	@FXML
 	public void delete(ActionEvent e) {
-		impl.delete(myHistorys.getFocusModel().getFocusedItem().getHistory());
-		refresh();
+		if(impl.delete(myHistorys.getFocusModel().getFocusedItem().getHistory()))
+		{
+			User user_ = UserRootController.user;
+			UserServiceImpl impl = new UserServiceImpl();
+			if (user_ != null) {
+				user_.setGrade_Point(user_.getGrade_Point() - 3000);
+				user_.setSale_Point(user_.getSale_Point() - 3000);
+				impl.update(user_);
+				refresh();
+			}
+			
+		}
+		
 	}
 }
