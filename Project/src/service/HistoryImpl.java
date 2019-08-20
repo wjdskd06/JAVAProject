@@ -18,6 +18,7 @@ public class HistoryImpl implements HistoryService {
 		Connection conn = DAO.getConnect();
 		try {
 			HistoryDAO.getInstance().insert(conn, history);
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -29,6 +30,7 @@ public class HistoryImpl implements HistoryService {
 		Connection conn = DAO.getConnect();
 		try {
 			HistoryDAO.getInstance().update(conn, history);
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -40,6 +42,7 @@ public class HistoryImpl implements HistoryService {
 		Connection conn = DAO.getConnect();
 		try {
 			HistoryDAO.getInstance().delete(conn, history);
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -86,6 +89,17 @@ public class HistoryImpl implements HistoryService {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public boolean selectInsertAbleDateUser(String start_Time, String end_Time, User user) {
+		Connection conn = DAO.getConnect();
+		try {
+			return HistoryDAO.getInstance().selectInsertAbleDateUser(conn, start_Time, end_Time, user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

@@ -42,7 +42,7 @@ public class HistoryDAO {
 		pstmt.setString(3, history.getEnd_Time());
 		pstmt.setInt(4, history.getUser_Code());
 		pstmt.setInt(5, history.getLocation_Id());
-		pstmt.setString(6,history.getSys_Use());
+		pstmt.setString(6, history.getSys_Use());
 		System.out.println(history.getLocation_Id());
 		int r = pstmt.executeUpdate();
 		System.out.println(r + "건  삽입 완료");
@@ -147,7 +147,7 @@ public class HistoryDAO {
 				history.setLocation_Id(rs.getInt("LOCATION_ID"));
 				history.setSys_Use(rs.getString("SYS_USE"));
 				history.setUpdate_Date(rs.getString("UPDATE_DATE"));
-			
+
 //						new History(new SimpleIntegerProperty(rs.getInt("HISTORY")),
 //						new SimpleStringProperty(rs.getString("START_TIME")),
 //						new SimpleStringProperty(rs.getString("END_TIME")),
@@ -156,20 +156,40 @@ public class HistoryDAO {
 //						new SimpleStringProperty(rs.getString("SYS_USE")),
 //						new SimpleStringProperty(rs.getString("UPDATE_DATE"))
 
-				
-
 				historys.add(history);
 			}
 
-		}catch(
+		} catch (
 
-	SQLException e)
-	{
+		SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-	return historys;
-}
+		return historys;
+	}
+	
+	public boolean selectInsertAbleDateUser(Connection conn, String start_Time,String end_Time, User user) {
+		
+		try {
+
+			String sql = "select * from history where start_Time >= ? and end_Time <= ? and user_code = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, start_Time);
+			pstmt.setString(2, end_Time);
+			pstmt.setInt(3, user.getUser_Code());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				return false;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return true;
+	}
 
 }

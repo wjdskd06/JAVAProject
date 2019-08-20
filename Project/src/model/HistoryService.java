@@ -19,4 +19,5 @@ public interface HistoryService {
 	List<History> selectAll();
 	List<History> selectDateAll(String date);
 	List<History> selectCancelAbleDateUser(String date, User user);
+	boolean selectInsertAbleDateUser(String start_Time,String end_Time, User user);
 }
