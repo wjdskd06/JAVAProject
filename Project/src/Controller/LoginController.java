@@ -1,5 +1,7 @@
 package Controller;
 
+
+
 import common.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,6 +52,7 @@ public class LoginController {
 		if (UserDAO.getInstance().Login(txtUserName.getText(), txtPassword.getText())) {
 			lblStatus.setText("Login Success");
 			Stage primaryStage = new Stage();
+			primaryStage = (Stage)txtUserName.getScene().getWindow();
 			UserRootController.user = UserDAO.getInstance().selectOne(DAO.getConnect(), txtUserName.getText());
 			Parent root;
 			if (UserRootController.user.getUser_Type() != null) {
@@ -59,9 +62,9 @@ public class LoginController {
 			}
 			Scene scene = new Scene(root);
 			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			primaryStage.setScene(scene);			
 			primaryStage.show();
-
+			
 		}
 
 //    if(txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")){
@@ -81,7 +84,8 @@ public class LoginController {
 //        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
+			
+		}
 
 	}
 
-}

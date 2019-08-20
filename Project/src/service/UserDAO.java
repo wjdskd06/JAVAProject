@@ -40,6 +40,7 @@ public class UserDAO {
 		pstmt.setString(6, user.getUser_Type());
 		int r = pstmt.executeUpdate();
 		System.out.println(r + "건 추가 완료");
+		
 
 	}
 
@@ -92,13 +93,14 @@ public class UserDAO {
 
 	public User selectOne(Connection conn, String user_id) throws SQLException {// user id != user code but please
 																				// primary key
-		User user = new User();
+		User user = null;
 		String sql = "select * from user1 where user_id = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
 		pstmt.setString(1, user_id);
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
+			user = new User();
 			user.setUser_Code(rs.getInt("USER_CODE"));
 			user.setUser_Id(rs.getString("USER_ID"));
 			user.setUser_Pw(rs.getString("USER_PW"));
@@ -179,7 +181,7 @@ public class UserDAO {
 		}
 
 		return false;
-
+		
 	}
 
 //	public List<DepartmentsTable> selectPage(Connection conn, int startuserid, int enddepartmentid)

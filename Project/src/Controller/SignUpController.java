@@ -8,13 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.User;
 import service.UserDAO;
 
@@ -53,10 +52,20 @@ public class SignUpController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		Connection conn = DAO.getConnect();
-		User user = new User();
-		user.setUser_Id(txtUserName.getText());
-		user.setUser_Pw(txtPassword.getText());
-		UserDAO.getInstance().insert(conn, user);
-		
+		UserDAO dao = new UserDAO();
+		if(dao.selectOne(conn, txtUserName.getText())  == null) {
+			User user = new User();
+			user.setUser_Id(txtUserName.getText());
+			user.setUser_Pw(txtPassword.getText());
+			UserDAO.getInstance().insert(conn, user);
+				
+		}
+		else{ 
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("경고");
+			alert.setContentText("있는 계정 입니다.");
+			alert.show();
+			
+		}
 	}
 }
